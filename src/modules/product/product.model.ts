@@ -5,14 +5,17 @@ const productSchema = new Schema<TProduct>(
     name: {
       type: String,
       required: true,
+      trim: true,
     },
     brand: {
       type: String,
       required: true,
+      trim: true,
     },
     description: {
       type: String,
       required: true,
+      trim: true,
     },
     type: {
       type: String,
@@ -25,6 +28,10 @@ const productSchema = new Schema<TProduct>(
     },
     quantity: {
       type: Number,
+      required: true,
+    },
+    inStock: {
+      type: Boolean,
       required: true,
     },
   },
