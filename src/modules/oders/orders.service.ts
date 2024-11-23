@@ -43,4 +43,24 @@ const productQuantityUpdate = async (clientData: TOrder) => {
   };
 };
 
-export const orderService = { orderCreateDB, productQuantityUpdate };
+const revenueFindDB = async () => {
+  const getTotalAmon = await OrderModel.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalRevenue: { $sum: '$totalPrice' },
+      },
+    },
+  ]);
+
+  const totalRevenue =
+    getTotalAmon.length > 0 ? getTotalAmon[0].totalRevenue : 0;
+
+  return { totalRevenue };
+};
+
+export const orderService = {
+  orderCreateDB,
+  productQuantityUpdate,
+  revenueFindDB,
+};

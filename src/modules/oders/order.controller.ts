@@ -36,4 +36,27 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const orderController = { createOrder };
+// revenueFindDB
+const revenueFind = async (req: Request, res: Response): Promise<void> => {
+  try {
+    //   product update
+    const revenued = await orderService.revenueFindDB();
+
+    // send data
+    res.status(200).json({
+      success: true,
+      message: 'Revenue calculated successfully',
+      data: revenued,
+    });
+  } catch (error) {
+    console.log({ error });
+
+    res.status(400).json({
+      success: false,
+      message: 'Validation failed',
+      error: error,
+    });
+  }
+};
+
+export const orderController = { createOrder, revenueFind };
