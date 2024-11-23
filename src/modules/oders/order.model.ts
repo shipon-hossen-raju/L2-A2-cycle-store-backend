@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Types } from 'mongoose';
 
 const orderSchema = new Schema<TOrder>(
   {
@@ -7,16 +7,19 @@ const orderSchema = new Schema<TOrder>(
       required: true,
     },
     product: {
-      type: String,
+      type: Types.ObjectId,
+      ref: 'product',
       required: true,
     },
     quantity: {
       type: Number,
       required: true,
+      min: 1,
     },
     totalPrice: {
       type: Number,
       required: true,
+      min: 0,
     },
   },
   {

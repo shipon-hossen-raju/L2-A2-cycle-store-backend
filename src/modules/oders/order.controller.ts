@@ -2,20 +2,29 @@ import { Request, Response } from 'express';
 import { orderService } from './orders.service';
 
 // product create or store controller
-const createOrder = async (req: Request, res: Response) => {
+const createOrder = async (req: Request, res: Response): Promise<void> => {
   try {
-    const clientData = req.body;
-    console.log({ clientData });
+    const clientData: TOrder = req.body;
 
-    const createdResult = await orderService.orderCreateDB(clientData);
-    console.log({ createdResult });
+    //   product update
+    const productUpdate = await orderService.productQuantityUpdate(clientData);
 
-    //   send data
-    res.status(200).json({
-      success: true,
-      message: 'Bicycle created successfully',
-      data: createdResult,
-    });
+    let createdResult;
+    if (productUpdate?.status) {
+      createdResult = await orderService.orderCreateDB(clientData);
+    }
+    //
+
+    // send data
+    res.status(200).json(
+      productUpdate.status
+        ? {
+            success: true,
+            message: 'Order created successfully',
+            data: createdResult,
+          }
+        : productUpdate,
+    );
   } catch (error) {
     console.log({ error });
 
