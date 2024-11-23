@@ -1,6 +1,8 @@
+import { ObjectId } from "mongoose";
+
 export type TOrder = {
   email: String;
-  product: Object;
+  product: ObjectId;
   quantity: number;
   totalPrice: number;
 };

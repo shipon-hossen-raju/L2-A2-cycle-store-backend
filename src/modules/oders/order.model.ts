@@ -4,8 +4,16 @@ import { TOrder } from "./order.interface";
 const orderSchema = new Schema<TOrder>(
   {
     email: {
-      type: String, // todo: email validation
+      type: String,
       required: true,
+      lowercase: true,
+      trim: true,
+      validate: {
+        validator: function (value) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        },
+        message: "Invalid email address format",
+      },
     },
     product: {
       type: Types.ObjectId,

@@ -9,21 +9,16 @@ const orderCreateDB = async (orderData: TOrder) => {
 
 const productQuantityUpdate = async (clientData: TOrder) => {
   const productFind = await ProductModel.findById(clientData?.product);
-  if (!productFind)
-    return {
-      message: `Your product is unavailable`,
-      status: false,
-      data: {},
-    };
+  if (!productFind) {
+    throw new Error("Product not found!");
+  }
 
   // price checking
   const storeProductCalculate = productFind?.price * clientData.quantity;
   if (clientData.totalPrice < storeProductCalculate) {
-    return {
-      message: `Your price is low. Your price: ${clientData.totalPrice} & Our Product price: ${storeProductCalculate}`,
-      status: false,
-      data: {},
-    };
+    throw new Error(
+      `Your price is low. Your price: ${clientData.totalPrice} & Our Product price: ${storeProductCalculate}`,
+    );
   }
 
   let productQuantityUpdated;

@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import e, { Request, Response } from "express";
 import { orderService } from "./orders.service";
 import { TOrder } from "./order.interface";
 
@@ -31,7 +31,8 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
 
     res.status(400).json({
       success: false,
-      message: "Validation failed",
+      message:
+        error instanceof Error ? error?.message : "Something went wrong!",
       error: error,
     });
   }

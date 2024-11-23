@@ -11,8 +11,10 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Cycle store backend server running");
 });
 
-// app routes
+// product routes
 app.use("/api/products", productRoute);
+
+// orders routes
 app.use("/api/orders", orderRoute);
 
 export default app;
