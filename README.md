@@ -19,23 +19,26 @@ A backend service for managing a cycle store, built with **Node.js**, **Express*
 
 ## Features
 
-- CRUD operations can be performed on the product.
-- Get All Bicycles
+Cycle Management APIs
 
----
+- Create a product
+- Get all products
+- Get a specific product by ID
+- Update a product by ID
+- Delete a product by ID
 
-## Tech Stack
+Orders Management APIs
 
-### our api endpoint
+- Create an order
+- Calculate total revenue from orders
 
-- ***
-
-## Tech Stack
+## Technologies
 
 - **Node.js**
 - **Express.js**
 - **TypeScript**
 - **MongoDB (Mongoose)**
+- **Zod validation library**
 
 ---
 
@@ -46,7 +49,7 @@ A backend service for managing a cycle store, built with **Node.js**, **Express*
    $ git clone https://github.com/shipon-hossen-raju/L2-A2-cycle-store-backend.git
    $ cd L2-A2-cycle-store-backend
    $ pnpm i
-   $
+   $ pnpm run start:dev
    ```
 
 ## Folder Structure
