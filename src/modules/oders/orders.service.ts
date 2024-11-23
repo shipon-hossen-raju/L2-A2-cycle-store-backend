@@ -12,21 +12,33 @@ const productQuantityUpdate = async (clientData: TOrder) => {
   if (!productFind) {
     throw new Error("Product not found!");
   }
-
   // price checking
   const storeProductCalculate = productFind?.price * clientData.quantity;
   if (clientData.totalPrice < storeProductCalculate) {
     throw new Error(
-      `Your price is low. Your price: ${clientData.totalPrice} & Our Product price: ${storeProductCalculate}`,
+      `Your price is low. Your price: ${clientData.totalPrice} but Our Product price: ${storeProductCalculate}`,
     );
   }
 
+  // product quantity checking
+  if (productFind?.quantity < clientData.quantity) {
+    throw new Error(`insufficient stock! `);
+  }
+
   let productQuantityUpdated;
-  if (productFind?.quantity >= 1) {
+  if (productFind?.quantity >= 0) {
     productQuantityUpdated = await ProductModel.findOneAndUpdate(
       { _id: clientData.product },
       {
         quantity: productFind?.quantity - clientData.quantity,
+      },
+      { new: true },
+    );
+  } else {
+    productQuantityUpdated = await ProductModel.findOneAndUpdate(
+      { _id: clientData.product },
+      {
+        inStock: false,
       },
       { new: true },
     );

@@ -1,14 +1,17 @@
 import e, { Request, Response } from "express";
 import { orderService } from "./orders.service";
 import { TOrder } from "./order.interface";
+import { orderZodSchema } from "./order.validation";
 
 // product create or store controller
 const createOrder = async (req: Request, res: Response): Promise<void> => {
   try {
     const clientData: TOrder = req.body;
+    const orderParseData = orderZodSchema.parse(clientData);
 
     //   product update
-    const productUpdate = await orderService.productQuantityUpdate(clientData);
+    const productUpdate =
+      await orderService.productQuantityUpdate(orderParseData);
 
     let createdResult;
     if (productUpdate?.status) {

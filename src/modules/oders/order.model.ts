@@ -16,7 +16,7 @@ const orderSchema = new Schema<TOrder>(
       },
     },
     product: {
-      type: Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "product",
       required: true,
     },

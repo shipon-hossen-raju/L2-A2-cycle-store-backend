@@ -8,7 +8,6 @@ const productSchema = new Schema(
       required: [true, "Product name is required"],
       trim: true,
       minlength: [3, "Name must be at least 3 characters"],
-      maxlength: [60, "Name cannot exceed 60 characters"],
     },
     price: {
       type: Number,
