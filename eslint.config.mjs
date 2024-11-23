@@ -9,7 +9,7 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node, // Add Node.js globals like `require` and `exports`
+        ...globals.node,
       },
     },
     plugins: {
@@ -19,18 +19,6 @@ export default [
       ...pluginJs.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
     },
-    ignores: ['dist/**', 'node_modules/**'], // Ignore compiled files
+    ignores: ['dist/**', 'node_modules/**'],
   },
 ];
-
-// import globals from "globals";
-// import pluginJs from "@eslint/js";
-// import tseslint from "typescript-eslint";
-
-// /** @type {import('eslint').Linter.Config[]} */
-// export default [
-//   {files: ["**/*.{js,mjs,cjs,ts}"]},
-//   {languageOptions: { globals: globals.browser }},
-//   pluginJs.configs.recommended,
-//   ...tseslint.configs.recommended,
-// ];

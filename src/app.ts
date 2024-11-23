@@ -1,18 +1,18 @@
-import express, { Request, Response } from 'express';
-import { productRoute } from './modules/product/product.routes';
-import { orderRoute } from './modules/oders/order.routes';
+import express, { Request, Response } from "express";
+import { orderRoute } from "./modules/oders/order.routes";
+import { productRoute } from "./modules/product/product.routes";
 
 const app = express();
 
 app.use(express.json());
 
 // default route or root route
-app.get('/', (req: Request, res: Response) => {
-  res.send('Cycle store backend server running');
+app.get("/", (req: Request, res: Response) => {
+  res.send("Cycle store backend server running");
 });
 
 // app routes
-app.use('/api/products', productRoute);
-app.use('/api/orders', orderRoute);
+app.use("/api/products", productRoute);
+app.use("/api/orders", orderRoute);
 
 export default app;

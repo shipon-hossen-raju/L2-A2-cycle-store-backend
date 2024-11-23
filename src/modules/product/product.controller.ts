@@ -1,27 +1,23 @@
-import { Request, Response } from 'express';
-import { productService } from './product.service';
+import { Request, Response } from "express";
+import { productService } from "./product.service";
 
 // product create or store controller
 const productCreateDB = async (req: Request, res: Response) => {
   try {
     const clientData = req.body;
-    // console.log({ clientData });
 
     const createdResult = await productService.createProductDB(clientData);
-    // console.log({ createdResult });
 
     //   send data
     res.status(200).json({
       success: true,
-      message: 'Bicycle created successfully',
+      message: "Bicycle created successfully",
       data: createdResult,
     });
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
-      message: 'Validation failed',
+      message: "Validation failed",
       error: error,
     });
   }
@@ -31,20 +27,17 @@ const productCreateDB = async (req: Request, res: Response) => {
 const getAllProducts = async (req: Request, res: Response) => {
   try {
     const getProducts = await productService.getAllProducts();
-    // console.log({ getProducts });
 
     //   send data
     res.status(200).json({
-      message: 'Bicycles retrieved successfully',
+      message: "Bicycles retrieved successfully",
       status: true,
       data: getProducts,
     });
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
-      message: 'Something went wrong!',
+      message: "Something went wrong!",
       error: error,
     });
   }
@@ -54,22 +47,17 @@ const getAllProducts = async (req: Request, res: Response) => {
 const getQueryProduct = async (req: Request, res: Response) => {
   try {
     const searchData = req.query;
-    console.log(searchData);
-    // const getProducts = await productService.getAllProducts();
-    // console.log({ getProducts });
 
     //   send data
     res.status(200).json({
-      message: 'Bicycles retrieved successfully',
+      message: "Bicycles retrieved successfully",
       status: true,
       data: searchData,
     });
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
-      message: 'Something went wrong!',
+      message: "Something went wrong!",
       error: error,
     });
   }
@@ -80,20 +68,17 @@ const getSpecificProducts = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const getProducts = await productService.getSpecificProducts(productId);
-    // console.log({ getProducts });
 
     //   send data
     res.status(200).json({
-      message: 'Bicycle retrieved successfully',
+      message: "Bicycle retrieved successfully",
       status: true,
       data: getProducts,
     });
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
-      message: 'Something went wrong!',
+      message: "Something went wrong!",
       error: error,
     });
   }
@@ -104,26 +89,22 @@ const getSpecificProductUpdate = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const bodyData = req.body;
-    // console.log({ bodyData });
 
     const getProductUpdated = await productService.getSpecificProductUpdate(
       productId,
       bodyData,
     );
-    // console.log({ getProductUpdated });
 
     //   send data
     res.status(200).json({
-      message: 'Bicycle updated successfully',
+      message: "Bicycle updated successfully",
       status: true,
       data: getProductUpdated,
     });
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
-      message: 'Something went wrong!',
+      message: "Something went wrong!",
       error: error,
     });
   }
@@ -136,20 +117,17 @@ const specificProductDelete = async (req: Request, res: Response) => {
 
     const productDeleted =
       await productService.specificProductDelete(productId);
-    // console.log({ productDeleted });
 
     //   send data
     res.status(200).json({
-      message: 'Bicycle deleted successfully',
+      message: "Bicycle deleted successfully",
       status: true,
       data: productDeleted.deletedCount && {},
     });
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
-      message: 'Something went wrong!',
+      message: "Something went wrong!",
       error: error,
     });
   }

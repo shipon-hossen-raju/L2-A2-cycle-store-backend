@@ -1,5 +1,6 @@
-import { Request, Response } from 'express';
-import { orderService } from './orders.service';
+import { Request, Response } from "express";
+import { orderService } from "./orders.service";
+import { TOrder } from "./order.interface";
 
 // product create or store controller
 const createOrder = async (req: Request, res: Response): Promise<void> => {
@@ -20,7 +21,7 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
       productUpdate.status
         ? {
             success: true,
-            message: 'Order created successfully',
+            message: "Order created successfully",
             data: createdResult,
           }
         : productUpdate,
@@ -30,7 +31,7 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
 
     res.status(400).json({
       success: false,
-      message: 'Validation failed',
+      message: "Validation failed",
       error: error,
     });
   }
@@ -45,7 +46,7 @@ const revenueFind = async (req: Request, res: Response): Promise<void> => {
     // send data
     res.status(200).json({
       success: true,
-      message: 'Revenue calculated successfully',
+      message: "Revenue calculated successfully",
       data: revenued,
     });
   } catch (error) {
@@ -53,7 +54,7 @@ const revenueFind = async (req: Request, res: Response): Promise<void> => {
 
     res.status(400).json({
       success: false,
-      message: 'Validation failed',
+      message: "Validation failed",
       error: error,
     });
   }

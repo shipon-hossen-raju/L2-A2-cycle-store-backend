@@ -1,4 +1,5 @@
-import ProductModel from './product.model';
+import { TProduct } from "./product.interface";
+import ProductModel from "./product.model";
 
 // create product
 const createProductDB = async (productData: TProduct) => {

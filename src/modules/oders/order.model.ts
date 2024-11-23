@@ -1,4 +1,5 @@
-import mongoose, { Schema, Types } from 'mongoose';
+import mongoose, { Schema, Types } from "mongoose";
+import { TOrder } from "./order.interface";
 
 const orderSchema = new Schema<TOrder>(
   {
@@ -8,7 +9,7 @@ const orderSchema = new Schema<TOrder>(
     },
     product: {
       type: Types.ObjectId,
-      ref: 'product',
+      ref: "product",
       required: true,
     },
     quantity: {
@@ -27,6 +28,6 @@ const orderSchema = new Schema<TOrder>(
   },
 );
 
-const OrderModel = mongoose.model<TOrder>('order', orderSchema);
+const OrderModel = mongoose.model<TOrder>("order", orderSchema);
 
 export default OrderModel;

@@ -1,5 +1,6 @@
-import ProductModel from '../product/product.model';
-import OrderModel from './order.model';
+import ProductModel from "../product/product.model";
+import { TOrder } from "./order.interface";
+import OrderModel from "./order.model";
 
 const orderCreateDB = async (orderData: TOrder) => {
   const order = new OrderModel(orderData);
@@ -37,7 +38,7 @@ const productQuantityUpdate = async (clientData: TOrder) => {
   }
 
   return {
-    message: 'product updated!',
+    message: "product updated!",
     status: true,
     data: productQuantityUpdated,
   };
@@ -48,7 +49,7 @@ const revenueFindDB = async () => {
     {
       $group: {
         _id: null,
-        totalRevenue: { $sum: '$totalPrice' },
+        totalRevenue: { $sum: "$totalPrice" },
       },
     },
   ]);
