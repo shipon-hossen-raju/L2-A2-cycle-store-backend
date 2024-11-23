@@ -1,7 +1,7 @@
-import e, { Request, Response } from "express";
-import { orderService } from "./orders.service";
+import { Request, Response } from "express";
 import { TOrder } from "./order.interface";
 import { orderZodSchema } from "./order.validation";
+import { orderService } from "./orders.service";
 
 // product create or store controller
 const createOrder = async (req: Request, res: Response): Promise<void> => {
@@ -30,8 +30,6 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
         : productUpdate,
     );
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
       message:
@@ -54,8 +52,6 @@ const revenueFind = async (req: Request, res: Response): Promise<void> => {
       data: revenued,
     });
   } catch (error) {
-    console.log({ error });
-
     res.status(400).json({
       success: false,
       message: "Validation failed",

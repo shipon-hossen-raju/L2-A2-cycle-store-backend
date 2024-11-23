@@ -8,8 +8,6 @@ const productCreateDB = async (req: Request, res: Response) => {
     const clientData = req.body;
     const zodParseData = productZodSchema.parse(clientData);
 
-    console.log({ zodParseData });
-
     const createdResult = await productService.createProductDB(zodParseData);
 
     //   send data
@@ -32,7 +30,9 @@ const getAllProducts = async (req: Request, res: Response) => {
   try {
     const { searchTerm } = req.query;
 
-    const getProducts = await productService.getAllProducts(searchTerm);
+    const getProducts = await productService.getAllProducts(
+      searchTerm as string,
+    );
 
     //   send data
     res.status(200).json({
@@ -122,7 +122,6 @@ const specificProductDelete = async (req: Request, res: Response) => {
 export const productController = {
   productCreateDB,
   getAllProducts,
-  // getQueryProduct,
   getSpecificProducts,
   getSpecificProductUpdate,
   specificProductDelete,

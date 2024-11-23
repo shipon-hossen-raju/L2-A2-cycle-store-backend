@@ -8,7 +8,7 @@ const createProductDB = async (productData: TProduct) => {
 };
 
 // get all product
-const getAllProducts = async (searchTerm?: Object) => {
+const getAllProducts = async (searchTerm?: string) => {
   return await ProductModel.find(
     searchTerm
       ? {
@@ -37,7 +37,7 @@ const getSpecificProductUpdate = async (
   id: string,
   bodyData: TProductUpdated,
 ) => {
-  let updateData: TProductUpdated = {};
+  const updateData: TProductUpdated = {};
 
   if (bodyData.price) {
     updateData.price = bodyData.price;

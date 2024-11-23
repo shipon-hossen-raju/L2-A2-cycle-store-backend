@@ -1,24 +1,26 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
+import pluginJs from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
+/** @type {import('eslint').Linter.Config[]} */
 export default [
+  { files: ["/*.{js,mjs,cjs,ts}"] },
+  { languageOptions: { globals: globals.browser } },
   {
-    files: ['**/*.{js,mjs,cjs,ts}'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-    },
-    plugins: {
-      '@typescript-eslint': tseslint,
-    },
     rules: {
-      ...pluginJs.configs.recommended.rules,
-      ...tseslint.configs.recommended.rules,
+      "no-undef": "error",
+      "no-console": "warn",
+      "prefer-const": "error",
+      "no-unused-vars": "error",
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        { allowShortCircuit: true },
+      ],
     },
-    ignores: ['dist/**', 'node_modules/**'],
   },
+  {
+    ignores: [".node_modules/", "dist/"],
+  },
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
 ];
