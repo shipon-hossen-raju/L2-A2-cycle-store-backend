@@ -41,50 +41,6 @@ const productSchema = new Schema(
   },
 );
 
-// import mongoose, { Schema } from 'mongoose';
-
-// const productSchema = new Schema<TProduct>(
-//   {
-//     name: {
-//       type: String,
-//       required: [true, 'Product name is required'],
-//       trim: true,
-//       minlength: [3, 'Product name is required'],
-//       maxlength: [50, 'Product name is required'],
-//     },
-//     brand: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     description: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     type: {
-//       type: String,
-//       enum: ['Mountain', 'Road', 'Hybrid', 'BMX', 'Electric'],
-//       required: true,
-//     },
-//     price: {
-//       type: Number,
-//       required: true,
-//     },
-//     quantity: {
-//       type: Number,
-//       required: true,
-//     },
-//     inStock: {
-//       type: Boolean,
-//       required: true,
-//     },
-//   },
-//   {
-//     timestamps: true,
-//   },
-// );
-
 const ProductModel = mongoose.model<TProduct>('product', productSchema);
 
 export default ProductModel;
