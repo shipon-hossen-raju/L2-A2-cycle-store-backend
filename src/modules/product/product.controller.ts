@@ -104,19 +104,45 @@ const getSpecificProductUpdate = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const bodyData = req.body;
-    console.log({ bodyData });
+    // console.log({ bodyData });
 
     const getProductUpdated = await productService.getSpecificProductUpdate(
       productId,
       bodyData,
     );
-    console.log({ getProductUpdated });
+    // console.log({ getProductUpdated });
 
     //   send data
     res.status(200).json({
-      message: 'Bicycles retrieved successfully',
+      message: 'Bicycle updated successfully',
       status: true,
       data: getProductUpdated,
+    });
+  } catch (error) {
+    console.log({ error });
+
+    res.status(400).json({
+      success: false,
+      message: 'Something went wrong!',
+      error: error,
+    });
+  }
+};
+
+// get all products
+const specificProductDelete = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+
+    const productDeleted =
+      await productService.specificProductDelete(productId);
+    // console.log({ productDeleted });
+
+    //   send data
+    res.status(200).json({
+      message: 'Bicycle deleted successfully',
+      status: true,
+      data: productDeleted.deletedCount && {},
     });
   } catch (error) {
     console.log({ error });
@@ -135,4 +161,5 @@ export const productController = {
   getQueryProduct,
   getSpecificProducts,
   getSpecificProductUpdate,
+  specificProductDelete,
 };

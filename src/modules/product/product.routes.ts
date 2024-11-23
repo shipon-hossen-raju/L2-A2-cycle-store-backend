@@ -17,4 +17,7 @@ route.get('/:productId', productController.getSpecificProducts);
 //  specific product data update
 route.put('/:productId', productController.getSpecificProductUpdate);
 
+//  specific product data delete
+route.delete('/:productId', productController.specificProductDelete);
+
 export const productRoute = route;

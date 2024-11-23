@@ -16,7 +16,7 @@ const getSpecificProducts = async (id: string) => {
   return await ProductModel.findOne({ _id: id });
 };
 
-// get specific product
+// get specific product update
 type TProductUpdated = { price?: number; quantity?: number };
 const getSpecificProductUpdate = async (
   id: string,
@@ -39,9 +39,18 @@ const getSpecificProductUpdate = async (
   return updated;
 };
 
+// get specific product update
+const specificProductDelete = async (id: string) => {
+  // specific product update
+  const deleted = await ProductModel.deleteOne({ _id: id });
+
+  return deleted;
+};
+
 export const productService = {
   createProductDB,
   getAllProducts,
   getSpecificProducts,
   getSpecificProductUpdate,
+  specificProductDelete,
 };

@@ -85,6 +85,6 @@ const productSchema = new Schema(
 //   },
 // );
 
-// const ProductModel = mongoose.model<TProduct>('product', productSchema);
+const ProductModel = mongoose.model<TProduct>('product', productSchema);
 
-// export default ProductModel;
+export default ProductModel;
