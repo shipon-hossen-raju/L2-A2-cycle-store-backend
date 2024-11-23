@@ -4,22 +4,22 @@ const productSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, 'Product name is required'], // Required with a custom error message
+      required: [true, 'Product name is required'],
       trim: true,
-      minlength: [3, 'Name must be at least 3 characters'], // Minimum length validation
-      maxlength: [50, 'Name cannot exceed 50 characters'], // Maximum length validation
+      minlength: [3, 'Name must be at least 3 characters'],
+      maxlength: [60, 'Name cannot exceed 60 characters'],
     },
     price: {
       type: Number,
       required: [true, 'Price is required'],
-      min: [1, 'Price must be at least 1'], // Minimum value
-      max: [10000, 'Price cannot exceed 10000'], // Maximum value
+      min: [1, 'Price must be at least 1'],
+      max: [10000, 'Price cannot exceed 10000'],
     },
     quantity: {
       type: Number,
       required: true,
       validate: {
-        validator: Number.isInteger, // Custom validator to check if it's an integer
+        validator: Number.isInteger,
         message: 'Quantity must be an integer',
       },
     },
@@ -28,7 +28,7 @@ const productSchema = new Schema(
       enum: {
         values: ['Mountain', 'Road', 'Hybrid', 'BMX', 'Electric'],
         message: 'Type must be one of Mountain, Road, Hybrid, BMX, or Electric',
-      }, // Enum validation
+      },
       required: true,
     },
     inStock: {
