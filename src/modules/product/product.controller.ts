@@ -80,13 +80,43 @@ const getSpecificProducts = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const getProducts = await productService.getSpecificProducts(productId);
-    console.log({ getProducts });
+    // console.log({ getProducts });
+
+    //   send data
+    res.status(200).json({
+      message: 'Bicycle retrieved successfully',
+      status: true,
+      data: getProducts,
+    });
+  } catch (error) {
+    console.log({ error });
+
+    res.status(400).json({
+      success: false,
+      message: 'Something went wrong!',
+      error: error,
+    });
+  }
+};
+
+// get all products
+const getSpecificProductUpdate = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const bodyData = req.body;
+    console.log({ bodyData });
+
+    const getProductUpdated = await productService.getSpecificProductUpdate(
+      productId,
+      bodyData,
+    );
+    console.log({ getProductUpdated });
 
     //   send data
     res.status(200).json({
       message: 'Bicycles retrieved successfully',
       status: true,
-      data: getProducts,
+      data: getProductUpdated,
     });
   } catch (error) {
     console.log({ error });
@@ -104,4 +134,5 @@ export const productController = {
   getAllProducts,
   getQueryProduct,
   getSpecificProducts,
+  getSpecificProductUpdate,
 };

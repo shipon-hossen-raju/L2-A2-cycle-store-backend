@@ -14,4 +14,7 @@ route.get('/?searchTerm', productController.getQueryProduct); // todo:
 // get specific product data
 route.get('/:productId', productController.getSpecificProducts);
 
+//  specific product data update
+route.put('/:productId', productController.getSpecificProductUpdate);
+
 export const productRoute = route;
