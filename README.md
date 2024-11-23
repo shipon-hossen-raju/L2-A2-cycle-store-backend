@@ -56,9 +56,8 @@ Orders Management APIs
 
 ```
 cycle-store-backend/
+   ├── dist/
    ├── src/
-      ├── app.ts
-      ├── server.ts
       ├── config/
       ├── modules/
          ├── product/
@@ -67,13 +66,16 @@ cycle-store-backend/
             ├── product.route.ts
             ├── product.controller.ts
             ├── product.service.ts
+            ├── product.validation.ts
          ├── order/
             ├── order.interface.ts
             ├── order.model.ts
             ├── order.route.ts
             ├── order.controller.ts
             ├── order.service.ts
-   ├── dist/
+            ├── order.validation.ts
+      ├── app.ts
+      ├── server.ts
    ├── package.json
    ├── tsconfig.json
    ├── .eslintrc.js
