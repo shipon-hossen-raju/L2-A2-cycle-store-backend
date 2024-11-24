@@ -5,15 +5,11 @@ A backend service for managing a cycle store, built with **Node.js**, **Express*
 ## Table of Contents
 
 - [Features](#features)
-- [Tech Stack](#tech-stack)
+- [Technologies](#technologies)
 - [Installation](#installation)
-- [Usage](#usage)
-  - [Development](#development)
-  - [Production](#production)
 - [Scripts](#scripts)
-- [Environment Variables](#environment-variables)
 - [Folder Structure](#folder-structure)
-- [License](#license)
+- [Live URL](#live-url)
 
 ---
 
@@ -82,3 +78,8 @@ cycle-store-backend/
    ├── .prettierrc
    └── .env
 ```
+
+## Live URL
+
+- Local access: http://localhost:5000
+- Live link or live access: https://l2-a2-cycle-store-backend.vercel.app
