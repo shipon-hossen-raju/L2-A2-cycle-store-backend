@@ -14,6 +14,17 @@ const productQuantityUpdate = async (clientData: TOrder) => {
     throw new Error("Product not found!");
   }
 
+  // If quantity becomes zero, update inStock status
+  if (product?.quantity === 0) {
+    await ProductModel.findByIdAndUpdate(
+      clientData.product,
+      { inStock: false },
+      { new: true },
+    );
+
+    throw new Error("Insufficient stock!");
+  }
+
   // Validate total price
   const expectedTotalPrice = product.price * clientData.quantity;
   if (clientData.totalPrice < expectedTotalPrice) {
