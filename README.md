@@ -7,7 +7,6 @@ A backend service for managing a cycle store, built with **Node.js**, **Express*
 - [Features](#features)
 - [Technologies](#technologies)
 - [Installation](#installation)
-- [Scripts](#scripts)
 - [Folder Structure](#folder-structure)
 - [Live URL](#live-url)
 
